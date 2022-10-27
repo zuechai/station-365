@@ -1,0 +1,58 @@
+//*** COLORS
+
+// PRIMARY
+$instock-black: #13182c;
+$instock-indigo: #2e66e5;
+$white: #fff;
+
+// SECONDARY
+$slate: #5c667e;
+$cloud: #bdc5d5;
+
+// BACKGROUND
+$graphite: #232940;
+$light-grey: #f7f8f9;
+
+// SUPPORTING
+$green: #158463;
+$red: #c94515;
+
+//*** TYPOGRAPHY
+$font-family: "Titillium Web", sans-serif;
+
+//*** BREAKPOINTS
+// for use with max-width
+$brkpt-mobile: 767px;
+// for use with min-width
+$brkpt-tablet: 768px;
+$brkpt-desktop: 1280px;
+
+//*** PADDING
+
+// naming convention = multipliers
+// i.e padding-1 = 1 * 8
+$increment: 0.8rem;
+
+$pad-half: calc($increment / 2); // 0.4rem
+$pad-1: calc($increment * 1); // 0.8rem
+$pad-2: calc($increment * 2); // 1.6rem
+$pad-3: calc($increment * 3); // 2.4rem
+$pad-4: calc($increment * 4); // 3.2rem
+$pad-5: calc($increment * 5); // 4rem
+$pad-6: calc($increment * 6); // 4.8rem
+$pad-7: calc($increment * 7); // 5.6rem
+$pad-8: calc($increment * 8); // 6.4rem
+$pad-9: calc($increment * 9); // 7.2rem
+$pad-10: calc($increment * 10); // 8rem
+
+//*** GUTTER
+$gutter-mobile: 1.6rem;
+$gutter-tablet: 2.4rem;
+
+//*** COLUMN
+$column-mobile: 1.6rem;
+$column-tablet: 3.2rem;
+$column-desktop: auto;
+
+//*** LABEL -- PADDING
+$label-pad: 0.4rem;
