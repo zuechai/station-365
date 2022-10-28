@@ -6,10 +6,31 @@ const TICKETS = `/tickets`;
 
 const ANTHONY = "a61f51sd31f13asfsa34fas3113";
 
+export function getAllUsers() {
+  return axios.get(`${BASE_URL}${USERS}`);
+}
+
 export function getLoggedInUser() {
   return axios.get(`${BASE_URL}${USERS}/${ANTHONY}`);
 }
 
 export function getAllTickets() {
   return axios.get(`${BASE_URL}${TICKETS}/all`);
+}
+
+export function getOpenTickets() {
+  return axios.get(`${BASE_URL}${TICKETS}/`);
+}
+
+export function getInProgressTickets() {
+  return axios.get(`${BASE_URL}${TICKETS}/all`);
+}
+
+export function getClosedTickets() {
+  return axios.get(`${BASE_URL}${TICKETS}/all`);
+}
+
+export function getUserTickets(userId) {
+  console.log(userId);
+  return axios.get(`${BASE_URL}${TICKETS}/all/${userId}`);
 }

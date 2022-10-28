@@ -3,7 +3,9 @@
 
 .sb {
   width: 34.8rem;
+  min-height: 100vh;
   padding: 4rem;
+  background-color: #f8f9fa;
 
   &__header {
     font-size: 2rem;

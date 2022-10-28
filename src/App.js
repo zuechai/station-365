@@ -31,7 +31,7 @@ function App() {
           <Router>
             <PageHeader username={loggedInUser.name} />
             <Routes>
-              <Route path="/" element={<HomePage />} />
+              <Route path="/" element={<HomePage userId={loggedInUser.id} />} />
               <Route path="/tickets" element={<TicketPage />} />
               {/* <Route path="/user" element={<UserPage />} /> */}
             </Routes>

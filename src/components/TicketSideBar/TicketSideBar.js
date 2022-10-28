@@ -1,9 +1,15 @@
 import { useState, useEffect } from "react";
-import { getAllTickets } from "../../utils/apiCalls";
+import {
+  getAllTickets,
+  getOpenTickets,
+  getInProgressTickets,
+  getClosedTickets,
+  getUserTickets,
+} from "../../utils/apiCalls";
 
 import "./TicketSideBar.scss";
 
-export default function TicketSideBar() {
+export default function TicketSideBar({ setTicketData, userId }) {
   const [isAllTickets, setIsAllTickets] = useState(false);
   const [isOpenTickets, setIsOpenTickets] = useState(true);
   const [isInProgress, setIsInProgress] = useState(false);
@@ -20,7 +26,39 @@ export default function TicketSideBar() {
     const getAll = async () => {
       try {
         const results = await getAllTickets();
-        console.log(results);
+        setTicketData(results.data);
+      } catch (e) {
+        console.log(e);
+      }
+    };
+    const getOpen = async () => {
+      try {
+        const results = await getOpenTickets();
+        setTicketData(results.data);
+      } catch (e) {
+        console.log(e);
+      }
+    };
+    const getInProgress = async () => {
+      try {
+        const results = await getInProgressTickets();
+        setTicketData(results.data);
+      } catch (e) {
+        console.log(e);
+      }
+    };
+    const getClosed = async () => {
+      try {
+        const results = await getClosedTickets();
+        setTicketData(results.data);
+      } catch (e) {
+        console.log(e);
+      }
+    };
+    const getMyTickets = async () => {
+      try {
+        const results = await getUserTickets(userId);
+        setTicketData(results.data);
       } catch (e) {
         console.log(e);
       }
@@ -33,6 +71,7 @@ export default function TicketSideBar() {
     }
     if (isOpenTickets) {
       setIsOpenTickets(false);
+      getOpen();
       return;
     }
     if (isInProgress) {
@@ -45,6 +84,7 @@ export default function TicketSideBar() {
     }
     if (isMyTickets) {
       setIsMyTickets(false);
+      getMyTickets();
       return;
     }
   }, [

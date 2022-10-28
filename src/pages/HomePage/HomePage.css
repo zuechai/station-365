@@ -1,7 +1,7 @@
 .hp {
   display: flex;
 }
-.hp__sidebar {
+.hp__ticket-list {
   flex: 100%;
 }
 
