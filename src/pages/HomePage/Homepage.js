@@ -33,34 +33,17 @@ export default function HomePage() {
     const onClick = (event) => {
         event.preventDefault();
 
-        setVote(vote + 1);
+        setVote((vote + 1));
+        setVote((vote) => !vote + 1);
     }
 
     return (
         <div>
-            <form className='form' 
-            // onSubmit={handleSubmit}
-            >
-                <div className='form__input'>
-                    <InputField
-                        label='Name'
-                        placeholder='Name'
-                        type='text'
-                        name='name'
-                    />
-                </div>
-                <div className='form__button'>
-                    <Button
-                        content='Button'
-                    />
-                </div>
-                <Button
+            <Button
                     content='Vote'
                     onClick={onClick}
                 />
                 <p>{vote}</p>
-
-            </form>
         </div>
     );
 }

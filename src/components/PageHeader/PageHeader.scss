@@ -1,0 +1,16 @@
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/reset" as *;
+@use "../../styles/partials/mixins" as *;
+
+.header {
+    text-align: center;
+
+    &__nav {
+        display: flex;
+        justify-content: space-around;
+        padding: 1rem;
+    }
+    &__button {
+        font-size: 2rem;
+    }
+}
