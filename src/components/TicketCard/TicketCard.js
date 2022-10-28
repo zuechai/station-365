@@ -18,7 +18,7 @@ export default function TicketCard({ ticket }) {
             <p>{ticket.votesAgainst.length}</p>
           </div>
           <div className="ticket__resolved">
-            <p>{ticket.isResolved ? "Open" : "Closed"}</p>
+            <p>{!ticket.isResolved ? "Open" : "Closed"}</p>
           </div>
         </div>
       </div>
