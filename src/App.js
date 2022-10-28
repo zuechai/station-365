@@ -32,7 +32,8 @@ function App() {
             <PageHeader username={loggedInUser.name} />
             <Routes>
               <Route path="/" element={<HomePage />} />
-              <Route path="/ticket" element={<TicketPage />} />
+              <Route path="/tickets" element={<TicketPage />} />
+              {/* <Route path="/user" element={<UserPage />} /> */}
             </Routes>
           </Router>
         </div>

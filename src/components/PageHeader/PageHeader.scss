@@ -1,27 +1,37 @@
 @use "../../styles/partials/variables" as *;
-@use "../../styles/partials/reset" as *;
 @use "../../styles/partials/mixins" as *;
 
 .header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   background-color: #212529;
-  text-align: center;
   color: #f8f9fa;
+  padding: 2rem 2.4rem;
 
-  &__button {
-    font-size: 2rem;
+  &__h1 {
+    font-size: 2.4rem;
   }
 }
 
-nav {
+.nav {
   display: flex;
-  justify-content: space-around;
+  gap: 2.4rem;
   padding: 1rem;
 
-  &__link {
+  &__item {
   }
 
   &__link,
-  &__link:visited {
+  &__link:link,
+  &__link:visited a {
     color: #f8f9fa;
+    padding: 1.2rem 0;
+    border-bottom: solid 4px transparent;
+    transition: all 0.3s;
+  }
+
+  &__link:hover {
+    border-bottom: solid 4px #f8f9fa;
   }
 }

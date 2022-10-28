@@ -8,11 +8,22 @@ export default function PageHeader({ username }) {
       <div className="header__logo">
         <img src={logo} alt="logo" className="header__logo-img" />
       </div>
+      <h1 className="header__h1">Find & Fix</h1>
       <ul className="nav">
         <li className="nav__item">
-          <Link className="nav__link">Dashboard</Link>
-          <Link className="nav__link">Submit a Ticket</Link>
-          <Link className="nav__link">{username}</Link>
+          <Link to={"/"} className="nav__link">
+            Dashboard
+          </Link>
+        </li>
+        <li>
+          <Link to={"/tickets"} className="nav__link">
+            Submit a Ticket
+          </Link>
+        </li>
+        <li>
+          <Link to={"/user"} className="nav__link">
+            {username}
+          </Link>
         </li>
       </ul>
     </header>
