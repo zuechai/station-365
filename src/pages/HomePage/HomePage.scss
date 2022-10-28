@@ -1,2 +1,13 @@
 @use "../../styles/partials/variables" as *;
 @use "../../styles/partials/mixins" as *;
+
+.hp {
+  display: flex;
+
+  &__sidebar {
+  }
+
+  &__ticket-list {
+    flex: 100%;
+  }
+}
