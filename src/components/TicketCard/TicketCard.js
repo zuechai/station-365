@@ -5,13 +5,13 @@ export default function TicketCard({ ticket }) {
         <div className="ticket-card">
             <div className="ticket-card__container">
                 <div className="ticket-card__content">
-                    <p>{ticket.title}</p>
+                    <p>{ticket.name}</p>
                 </div>
                 <div className="ticket-card__content">
                     <p>{ticket.description}</p>
                 </div>
                 <div className="ticket-card__content">
-                    <p>{ticket.submittedBy}</p>
+                    <p>{ticket.target_date}</p>
                 </div>
                 <div className="ticket-card__content">
                     <p>Votes For: {ticket.votesFor}</p>

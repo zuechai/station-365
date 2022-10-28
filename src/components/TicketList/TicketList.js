@@ -9,7 +9,7 @@ export default function TicketList({ticketData}) {
                 <h1 className='ticket__header-title'>Tickets</h1>
             </div>
             <div className='ticket__header'>
-                <p className='ticket__header-text'>TITLE</p>
+                <p className='ticket__header-text'>Requester</p>
                 <p className='ticket__header-text'>DESCRIPTION</p>
                 <p className='ticket__header-text'>SUBMITTED BY:</p>
                 <p className='ticket__header-text'>VOTES FOR</p>

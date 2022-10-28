@@ -2,7 +2,7 @@ import axios from 'axios';
 import './HomePage.scss'
 import { useEffect, useState } from "react";
 import Button from '../../components/Button/Button';
-import { useParams } from 'react-router-dom'
+// import { useParams } from 'react-router-dom'
 import TicketList from '../../components/TicketList/TicketList';
 
 const ticketURL = `http://localhost:8080/tickets`;

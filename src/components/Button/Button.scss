@@ -3,20 +3,20 @@
 @use "../../styles/partials/mixins" as *;
 
 .button {
-    padding: 1rem;
 
     @include tablet-media-break {
         // width: auto;
     }
 
     &__button {
+        margin: 1rem 1rem 0rem 0rem;
         border: none;
         border-radius: 1.25rem;
         color: $white;
         font-weight: 600;
-        width: 50%;
-        height: 2rem;
-        background-color: $instock-black;
+        width: 30%;
+        height: 4rem;
+        background-color: #212529;
     
         &:hover {
             cursor: pointer;

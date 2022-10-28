@@ -1,199 +1,144 @@
 import InputField from '../../components/InputField/InputField';
 import Button from '../../components/Button/Button';
 import "./TicketPage.scss";
+import axios from "axios";
+import { useRef, useState } from "react";
+import Textarea from '../../components/Textarea/Textarea';
+import { Link, useNavigate } from "react-router-dom";
+import { v4 as uuidv4 } from "uuid";
 
-export default function TicketPage () {
-    return (
+export default function TicketPage() {
+    const [card, setCard] = useState([])
+    const navigate = useNavigate();
+
+    const handleSubmit = (event) => {
+        event.preventDefault();
+
+        const form = event.target;
+
+        const subject = form.subject.value;
+        // const target_date = form.target_date.value;
+        const priority = form.priority.value;
+        const category = form.category.value;
+        const team = form.team.value;
+        const employee = form.employee.value;
+        const description = form.description.value;
+
+        const formObj = {
+            id: uuidv4(),
+            subject,
+            description,
+            // timestamp: new Date().toDateString(),
+            // target_date: new Date().toLocaleDateString(),
+            priority,
+            category,
+            team,
+            employee,
+            votesFor: 0,
+            votesAgainst: 0,
+            isResolved: false
+        }
+
+        axios
+            .post('http://localhost:8080/tickets', formObj)
+            .then((resp) => {
+                console.log(resp.data)
+                setCard(card(resp.data));
+                alert('New Ticket added!')
+                navigate('/');
+            })
+            .catch((error) => {
+                alert(error);
+            })
+
+        const validForm = () => {
+            if (subject === '' || description === '') {
+                return false;
+            }
+            return true;
+        }
+    }
+    console.log(setCard)
+    return (<>
+        <div className='ticketpage'>
+            <h1 className='ticketpage__title'>New Ticket Details</h1>
+            <p>Ready to get started? Please fill out the following form to submit a request.</p>
+        </div>
         <form className='form'
-            // onSubmit={handleSubmit}
-            >
-                <div className='form__input'>
-                    <InputField
-                        label='Name'
-                        placeholder='Owner'
-                        type='text'
-                        name='name'
-                    />
-                    <div className='form__group'>
-                        <div className='form__group-container'>
-                            <input
-                                className='form__group-radio'
-                                type='radio'
-                                name='group'
-                                value='design'
-                            />
-                            <p className='form__group-text'>Design</p>
-                        </div>
-                        <div className='form__group-container'>
-                            <input
-                                className='form__group-radio'
-                                type='radio'
-                                name='group'
-                                value='development'
-                            />
-                            <p className='form__group-text'>Development</p>
-                        </div>
-                        <div className='form__group-container'>
-                            <input
-                                className='form__group-radio'
-                                type='radio'
-                                name='group'
-                                value='security'
-                            />
-                            <p className='form__group-text'>Security</p>
-                        </div>
-                        <div className='form__group-container'>
-                            <input
-                                className='form__group-radio'
-                                type='radio'
-                                name='group'
-                                value='machine learning'
-                            />
-                            <p className='form__group-text'>Machine Learning</p>
-                        </div>
-                        <div className='form__group-container'>
-                            <input
-                                className='form__group-radio'
-                                type='radio'
-                                name='group'
-                                value='hr'
-                            />
-                            <p className='form__group-text'>HR</p>
-                        </div>
-                    </div>
-                    <InputField
-                        label='Submittal Date'
-                        placeholder='Date'
-                        type='date'
-                        name='submit date'
-                    />
-                    <InputField
-                        label='Target Date'
-                        placeholder='Date'
-                        type='date'
-                        name='target_date'
-                    />
-                    <div className='form__problem'>
-                        <div className='form__problem-container'>
-                            <input
-                                className='form__problem-checkbox'
-                                type='checkbox'
-                                name='problem'
-                                value='quality'
-                            />
-                            <p className='form__problem-text'>Quality</p>
-                        </div>
-                        <div className='form__problem-container'>
-                            <input
-                                className='form__problem-checkbox'
-                                type='checkbox'
-                                name='problem'
-                                value='hardware'
-                            />
-                            <p className='form__problem-text'>Hardware</p>
-                        </div>
-                        <div className='form__problem-container'>
-                            <input
-                                className='form__problem-checkbox'
-                                type='checkbox'
-                                name='problem'
-                                value='facilty'
-                            />
-                            <p className='form__problem-text'>Facilty</p>
-                        </div>
-                        <div className='form__problem-container'>
-                            <input
-                                className='form__problem-checkbox'
-                                type='checkbox'
-                                name='problem'
-                                value='operations'
-                            />
-                            <p className='form__problem-text'>Operations</p>
-                        </div>
-                        <div className='form__problem-container'>
-                            <input
-                                className='form__problem-checkbox'
-                                type='checkbox'
-                                name='problem'
-                                value='engagement'
-                            />
-                            <p className='form__problem-text'>Engagement</p>
-                        </div>
-                        <div className='form__problem-container'>
-                            <input
-                                className='form__problem-checkbox'
-                                type='checkbox'
-                                name='problem'
-                                value='wfh'
-                            />
-                            <p className='form__problem-text'>WFH</p>
-                        </div>
-                    </div>
-                    <InputField
-                        label='Problem Statement'
-                        placeholder='Your Answer'
-                        type='text'
-                        name='problem_statement'
-                    />
-                    <div className='form__priority'>
-                        <div className='form__priority-container'>
-                            <input
-                                className='form__priority-radio'
-                                type='radio'
-                                name='priority'
-                                value='one'
-                            />
-                            <p className='form__priority-text'>1</p>
-                        </div>
-                        <div className='form__priority-container'>
-                            <input
-                                className='form__priority-radio'
-                                type='radio'
-                                name='priority'
-                                value='two'
-                            />
-                            <p className='form__priority-text'>2</p>
-                        </div>
-                        <div className='form__priority-container'>
-                            <input
-                                className='form__priority-radio'
-                                type='radio'
-                                name='priority'
-                                value='three'
-                            />
-                            <p className='form__priority-text'>3</p>
-                        </div>
-                        <div className='form__priority-container'>
-                            <input
-                                className='form__priority-radio'
-                                type='radio'
-                                name='priority'
-                                value='four'
-                            />
-                            <p className='form__priority-text'>4</p>
-                        </div>
-                        <div className='form__priority-container'>
-                            <input
-                                className='form__priority-radio'
-                                type='radio'
-                                name='priority'
-                                value='five'
-                            />
-                            <p className='form__priority-text'>5</p>
-                        </div>
-                    </div>
-                    <InputField
-                        label='Employees connected to issue (if applicable)'
-                        placeholder='Name'
-                        type='text'
-                        name='connection'
-                    />
+            onSubmit={handleSubmit}
+        >
+            <div className='form__first'>
+                <InputField
+                    label='Subject'
+                    placeholder='Fullname'
+                    type='text'
+                    name='subject'
+                />
+                <div className='form__first-select'>
+                    <h3 className="input__label">Select Priority</h3>
+                    <select className="input__value" name='priority'>
+                        <option type="text" value=''>Please Select</option>
+                        <option type='text' value='Very High'>Very High</option>
+                        <option type='text' value='High'>High</option>
+                        <option type='text' value='Medium'>Medium</option>
+                        <option type='text' value='Low'>Low</option>
+                        <option type='text' value='Very Low'>Very Low</option>
+                    </select>
                 </div>
-                <div className='form__button'>
-                    <Button
-                        content='SUBMIT'
-                    />
+                <div className='form__first-select'>
+                    <h3 className="input__label">Select Category</h3>
+                    <select className="input__value" name='category'>
+                        <option type="text" value=''>Please Select</option>
+                        <option type='text' value='Design'>Design</option>
+                        <option type='text' value='Development'>Development</option>
+                        <option type='text' value='Security'>Security</option>
+                        <option type='text' value='Machine Learning'>Machine Learning</option>
+                        <option type='text' value='HR'>HR</option>
+                    </select>
                 </div>
-            </form>
+            </div>
+            <div className='form__second'>
+                <div className='form__first-select'>
+                    <h3 className="input__label">Select Team</h3>
+                    <select className="input__value" name='team'>
+                        <option type="text" value=''>Please Select</option>
+                        <option type='text' value='Team BugKillers'>Team BugKillers</option>
+                        <option type='text' value='Cleanup Crew'>Cleanup Crew</option>
+                        <option type='text' value='Team Lightspeed'>Team Lightspeed</option>
+                        <option type='text' value='Boat Crew 2'>Boat Crew 2</option>
+                        <option type='text' value='The Survivors'>The Survivors</option>
+                    </select>
+                </div>
+                {/* <InputField
+                    className='form__date'
+                    label='Target Completion Date'
+                    type='date'
+                    name='target_date'
+                /> */}
+            </div>
+            <div className='form__third'>
+                <InputField
+                    label='Employee(s) connected to issue'
+                    placeholder='Employee Names'
+                    type='text'
+                    name='employee'
+                />
+            </div>
+            <Textarea
+                label='Ticket Details'
+                type='textarea'
+                name='description'
+            />
+
+            <div className='form__button'>
+                <Button
+                    content='SUBMIT'
+                />
+                <Link to='/'>
+                    <button className='form__cancel'>Cancel</button>
+                </Link>
+            </div>
+        </form>
+    </>
     )
 }

@@ -1,0 +1,50 @@
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/reset" as *;
+
+.ticketpage {
+    padding: 2rem 4rem;
+
+}
+
+.form {
+    padding: 4rem;
+    width: 100%;
+
+    &__first, &__second, &__third {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        width: 100%;
+        padding-bottom: 4rem;
+
+        &-select {
+            padding-right: 4rem;
+        }
+    }
+
+    &__cancel {
+        margin-left: 4rem;
+        border: none;
+        border-radius: 1.25rem;
+        font-weight: 600;
+        width: 30%;
+        height: 4rem;
+        background-color: white;
+    
+        &:hover {
+            cursor: pointer;
+        }
+    }
+}
+
+input.form__date {
+    width: 20px;
+}
+
+.form__first select {
+    width: 20rem;
+}
+
+.form__second input {
+    width: 15rem;
+}
