@@ -1,19 +1,20 @@
 import "./PageHeader.scss";
 import { Link } from "react-router-dom";
+import logo from "../../assets/logo/logo.svg";
 
-export default function PageHeader() {
-    return (
-        <header className="header">
-            <h1>HEADER TEST</h1>
-            <div className="header__nav">
-                <Link className="header__nav-link" to='/'>
-                    <button className="header__button">Home</button>
-                </Link>
-
-                <Link className="header__nav-link" to='/ticket'>
-                    <button className="header__button">Ticket Form</button>
-                </Link>
-            </div>
-        </header>
-    );
+export default function PageHeader({ username }) {
+  return (
+    <header className="header">
+      <div className="header__logo">
+        <img src={logo} alt="logo" className="header__logo-img" />
+      </div>
+      <ul className="nav">
+        <li className="nav__item">
+          <Link className="nav__link">Dashboard</Link>
+          <Link className="nav__link">Submit a Ticket</Link>
+          <Link className="nav__link">{username}</Link>
+        </li>
+      </ul>
+    </header>
+  );
 }
