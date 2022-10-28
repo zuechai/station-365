@@ -1,0 +1,14 @@
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/reset" as *;
+@use "../../styles/partials/mixins" as *;
+
+.ticket {
+    padding: 1rem;
+
+    &__header {
+        display: flex;
+        justify-content: space-between;
+        padding: 1rem;
+        width: 100%;
+    }
+}

@@ -1,34 +1,28 @@
 import axios from 'axios';
-import InputField from '../../components/InputField/InputField';
 import './HomePage.scss'
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Button from '../../components/Button/Button';
+import { useParams } from 'react-router-dom'
+import TicketList from '../../components/TicketList/TicketList';
+
+const ticketURL = `http://localhost:8080/tickets`;
 
 export default function HomePage() {
+    // const { id } = useParams();
 
-    const [card, setCard] = useState([]);
+    const [ticketData, setTicketData] = useState([]);
     const [vote, setVote] = useState(0);
 
-    // const handleSubmit = (event) => {
-    //     event.preventDefault();
-
-    //     const form = event.target;
-
-    //     const name = form.name.value;
-
-    //     const formObj = {
-    //         name
-    //     }
-
-    //     axios
-    //         .post('http://localhost:8080/', formObj)
-    //         .then((resp) => {
-    //             setCard(card(resp.data));
-    //         })
-    //         .catch((error) => {
-    //             alert(error);
-    //         })
-    // }
+    useEffect(() => {
+        axios
+            .get(ticketURL)
+            .then((res) => {
+                setTicketData(res.data);
+            })
+            .catch((err) => {
+                console.log(err);
+            })
+    }, []);
 
     const onClick = (event) => {
         event.preventDefault();
@@ -37,13 +31,19 @@ export default function HomePage() {
         setVote((vote) => !vote + 1);
     }
 
+    if (!ticketData) {
+        return <p> Loading... </p>;
+    }
+
+
     return (
         <div>
+            <TicketList ticketData={ticketData} />
             <Button
-                    content='Vote'
-                    onClick={onClick}
-                />
-                <p>{vote}</p>
+                content='Vote'
+                onClick={onClick}
+            />
+            <p>{vote}</p>
         </div>
     );
 }
