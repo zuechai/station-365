@@ -1,0 +1,43 @@
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/mixins" as *;
+
+.sb {
+  width: 34.8rem;
+  padding: 4rem;
+
+  &__header {
+    font-size: 2rem;
+    padding-bottom: 2.8rem;
+    cursor: pointer;
+  }
+
+  &__divider {
+    @include divider;
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: 4rem;
+    margin-bottom: 4rem;
+
+    &-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 2rem;
+      cursor: pointer;
+
+      &-num {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 1.2rem;
+        background-color: #ced4da;
+        border-radius: 1rem;
+        min-width: 4.5rem;
+        height: 2.3rem;
+      }
+    }
+  }
+}

@@ -85,3 +85,13 @@
     line-height: 1.8rem;
   }
 }
+
+@mixin divider {
+  content: "";
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  border-top: 0.1rem solid #212529;
+  margin-bottom: 4rem;
+}

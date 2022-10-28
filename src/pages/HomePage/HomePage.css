@@ -1,3 +1,8 @@
-
+.hp {
+  display: flex;
+}
+.hp__sidebar {
+  flex: 100%;
+}
 
 /*# sourceMappingURL=HomePage.css.map */
